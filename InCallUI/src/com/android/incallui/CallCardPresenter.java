@@ -453,7 +453,7 @@ public class CallCardPresenter extends Presenter<CallCardPresenter.CallCardUi>
         return null;
     }
 
-    private void updatePrimaryCallState() {
+    public void updatePrimaryCallState() {
         if (getUi() != null && mPrimary != null) {
             boolean isWorkCall = mPrimary.hasProperty(PROPERTY_ENTERPRISE_CALL)
                     || (mPrimaryContactInfo == null ? false

@@ -933,6 +933,7 @@ public class CallCardFragment extends BaseFragment<CallCardPresenter, CallCardPr
             mCallStateIcon.setAlpha(0.0f);
             mCallStateIcon.setVisibility(View.GONE);
         }
+        mCallStateIcon.requestLayout();
 
         if (VideoUtils.isVideoCall(videoState)
                 || (state == Call.State.ACTIVE && sessionModificationState

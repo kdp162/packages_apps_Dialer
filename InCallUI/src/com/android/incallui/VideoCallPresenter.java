@@ -518,6 +518,10 @@ public class VideoCallPresenter extends Presenter<VideoCallPresenter.VideoCallUi
         cancelAutoFullScreen();
     }
 
+    @Override
+    public void updatePrimaryCallState() {
+    }
+
     /**
      * Handles changes to the visibility of the secondary caller info bar.
      *
