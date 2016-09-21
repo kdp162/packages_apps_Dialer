@@ -1123,12 +1123,6 @@ e mode.</string>
 
     <string name="no">No</string>
 
-    <string name="input_number">Input Number</string>
-
-    <string name="speed_dial_cancel">Cancel</string>
-
-    <string name="speed_dial_ok">OK</string>
-
     <string name="call_log_show_all_slots">All SIMs</string>
 
     <string name="call_log_all_calls_header">All calls</string>
@@ -1163,4 +1157,7 @@ e mode.</string>
     <string name="alert_user_connect_to_wifi_for_call">Connect to Wi-Fi to make calls.</string>
     <string name="missing_account_type">(No type)</string>
     <string name="missing_account_name">(No name)</string>
+
+    <string name="speed_dial_edit_title">Edit speed dial <xliff:g id="index" example="2">%1$d</xliff:g></string>
+    <string name="speed_dial_input_hint">Please enter a number</string>
 </resources>
