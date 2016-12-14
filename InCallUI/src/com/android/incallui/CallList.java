@@ -21,7 +21,6 @@ import android.os.Message;
 import android.os.Trace;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccount;
-import android.text.TextUtils;
 
 import com.android.contacts.common.testing.NeededForTesting;
 import com.android.dialer.database.FilteredNumberAsyncQueryHandler;
@@ -460,15 +459,6 @@ public class CallList {
         }
 
         return retval;
-    }
-
-    public Call getCallWithStateAndNumber(int state, String number) {
-        for (Call call : mCallById.values()) {
-            if (TextUtils.equals(call.getNumber(), number) && call.getState() == state) {
-                return call;
-            }
-        }
-        return null;
     }
 
     /**

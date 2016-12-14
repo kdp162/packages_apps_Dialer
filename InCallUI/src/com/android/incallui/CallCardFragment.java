@@ -164,7 +164,6 @@ public class CallCardFragment extends BaseFragment<CallCardPresenter, CallCardPr
     private View mCallButtonsContainer;
     private ImageView mPhotoSmall;
     private ImageButton mVbButton;
-    private TextView mRecordingTime;
     private AudioManager mAudioManager;
 
     // Secondary caller info
@@ -263,31 +262,6 @@ public class CallCardFragment extends BaseFragment<CallCardPresenter, CallCardPr
      * Determines if secondary call info is populated in the secondary call info UI.
      */
     private boolean mHasSecondaryCallInfo = false;
-
-    private CallRecorder.RecordingProgressListener mRecordingProgressListener =
-            new CallRecorder.RecordingProgressListener() {
-        @Override
-        public void onStartRecording() {
-            mRecordingTime.setText(DateUtils.formatElapsedTime(0));
-            if (mRecordingTime.getVisibility() != View.VISIBLE) {
-                AnimUtils.fadeIn(mRecordingTime, AnimUtils.DEFAULT_DURATION);
-            }
-        }
-
-        @Override
-        public void onStopRecording() {
-            AnimUtils.fadeOut(mRecordingTime, AnimUtils.DEFAULT_DURATION);
-        }
-
-        @Override
-        public void onRecordingTimeProgress(final long elapsedTimeMs) {
-            long elapsedSeconds = (elapsedTimeMs + 500) / 1000;
-            mRecordingTime.setText(DateUtils.formatElapsedTime(elapsedSeconds));
-
-            // make sure this is visible in case we re-loaded the UI for a call in progress
-            mRecordingTime.setVisibility(View.VISIBLE);
-        }
-    };
 
     private static final int TTY_MODE_OFF = 0;
     private static final int TTY_MODE_HCO = 2;
@@ -451,10 +425,6 @@ public class CallCardFragment extends BaseFragment<CallCardPresenter, CallCardPr
         mPrimaryName.setElegantTextHeight(false);
         mCallStateLabel.setElegantTextHeight(false);
         mCallSubject = (TextView) view.findViewById(R.id.callSubject);
-        mRecordingTime = (TextView) view.findViewById(R.id.recordingTime);
-
-        CallRecorder recorder = CallRecorder.getInstance();
-        recorder.addRecordingProgressListener(mRecordingProgressListener);
 
         mVbButton = (ImageButton) view.findViewById(R.id.volumeBoost);
         if (null != mVbButton) {
@@ -470,14 +440,6 @@ public class CallCardFragment extends BaseFragment<CallCardPresenter, CallCardPr
         }
 
         mRecordingTimeLabel.setText(time);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
-        CallRecorder recorder = CallRecorder.getInstance();
-        recorder.removeRecordingProgressListener(mRecordingProgressListener);
     }
 
     @Override
